@@ -1,0 +1,8 @@
+api = "http://qq.com"
+log_servers = ["localhost", "127.0.0.1"]
+
+[db]
+host = "127.0.0.1"
+user = "root"
+password = ""
+name = "dbname"
