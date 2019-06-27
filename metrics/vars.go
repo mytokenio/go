@@ -68,7 +68,7 @@ const (
 	default_producer_msg_caps  = 20
 	default_roport_state_topic = "state_monitor_center"
 	default_roport_alarm_topic = "alarm_monitor_center"
-	dev_default_kafka_brokers  = "dev.kafka.mytoken.org:9092"
+	dev_default_kafka_brokers  = "dev.kafka.mytoken.org"
 	beta_default_kafka_brokers = "172.17.1.63:9092"
 	pro_default_kafka_brokers  = "172.16.0.131:9092,172.16.0.132:9092,172.16.0.133:9092"
 )
