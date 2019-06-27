@@ -1,7 +1,7 @@
 package log
 
 import (
-	"github.com/json-iterator/go"
+	jsoniter "github.com/json-iterator/go"
 	"github.com/sirupsen/logrus"
 )
 
@@ -31,13 +31,16 @@ const (
 
 const (
 	defMaxRolls    = 3
-	envLogToFile   = "LOG_TO_FILE"  // write log to file
-	envLogServer   = "LOG_SERVER"   // log server
-	envJobID       = "JOB_ID"       // job id
-	envServiceName = "SERVICE_NAME" // service name
-	envEnv         = "ENV"          // env
-	envDev         = "dev"          // dev
-	envBeta        = "beta"         // beta
-	envTest        = "test"         // test
-	envPro         = "product"      // product
+	envLogToFile   = "LOG_TO_FILE"          // write log to file
+	envLogServer   = "LOG_SERVER"           // log server
+	envLogEndpoint = "LOG_ENDPOINT"         // Aliyun SLS endpoint
+	envLogKey      = "ALIYUN_ACCESS_KEY"    // Aliyun access key
+	envLogSecret   = "ALIYUN_ACCESS_SECRET" // Aliyun access secret
+	envJobID       = "JOB_ID"               // job id
+	envServiceName = "SERVICE_NAME"         // service name
+	envEnv         = "ENV"                  // env
+	envDev         = "dev"                  // dev
+	envBeta        = "beta"                 // beta
+	envTest        = "test"                 // test
+	envPro         = "product"              // product
 )

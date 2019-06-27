@@ -7,8 +7,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/json-iterator/go"
-	"github.com/lestrrat-go/file-rotatelogs"
+	jsoniter "github.com/json-iterator/go"
+	rotatelogs "github.com/lestrrat-go/file-rotatelogs"
 	"github.com/rs/xid"
 	"github.com/sirupsen/logrus"
 )
@@ -89,6 +89,17 @@ func init() {
 		)
 		log.Out = rotateLog
 	}
+
+	// add aliyun sls hook
+	endpoint := os.Getenv(envLogEndpoint)
+	if endpoint != "" {
+		key := os.Getenv(envLogKey)
+		secret := os.Getenv(envLogSecret)
+		if key != "" && secret != "" {
+			log.AddHook(NewAliyunSLSHook(endpoint, key, secret, debug))
+		}
+	}
+
 }
 
 // ---------------------------------------------------------------------------------------------------------------------
