@@ -47,9 +47,9 @@ func init() {
 	}
 
 	// add es log hook
-	if server := os.Getenv(envLogServer); server != "" {
-		log.AddHook(NewEsLogHook(server))
-	}
+	// if server := os.Getenv(envLogServer); server != "" {
+	// 	log.AddHook(NewEsLogHook(server))
+	// }
 
 	// add line hook
 	log.AddHook(NewLineHook(isDev))
