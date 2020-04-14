@@ -25,7 +25,7 @@ func init() {
 		logrus.FieldKeyLevel: "[L]",
 		logrus.FieldKeyMsg:   "[Msg]",
 	}
-	log.SetFormatter(formatter)
+	logrus.SetFormatter(formatter)
 
 	var isLocal, isDev bool
 	switch strings.ToLower(os.Getenv(envEnv)) {
