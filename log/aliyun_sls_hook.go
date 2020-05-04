@@ -5,10 +5,14 @@ import (
 
 	"github.com/aliyun/aliyun-log-go-sdk/producer"
 	"github.com/sirupsen/logrus"
+	"os"
 )
+
+const LOGSTORE string = "golog"
 
 type AliyunSLSHook struct {
 	producerInstance *producer.Producer
+	logstore string
 }
 
 func NewAliyunSLSHook(endpoint string, key string, secret string, debug bool) *AliyunSLSHook {
@@ -23,7 +27,11 @@ func NewAliyunSLSHook(endpoint string, key string, secret string, debug bool) *A
 	producerInstance := producer.InitProducer(producerConfig)
 	producerInstance.Start()
 
-	return &AliyunSLSHook{producerInstance}
+	logstore := os.Getenv(envLogStore)
+	if logstore == "" {
+		logstore = LOGSTORE
+	}
+	return &AliyunSLSHook{producerInstance, logstore}
 }
 
 func (hook *AliyunSLSHook) Fire(entry *logrus.Entry) error {
@@ -38,7 +46,6 @@ func (hook *AliyunSLSHook) Fire(entry *logrus.Entry) error {
 	delete(entry.Data, typeField)
 
 	const PROJECT string = "mytoken-open-api-log"
-	const LOGSTORE string = "golog"
 
 	go func() {
 		// GenerateLog  is producer's function for generating SLS format logs
@@ -53,7 +60,7 @@ func (hook *AliyunSLSHook) Fire(entry *logrus.Entry) error {
 			"Extra":    string(extra_out),
 			"Message":  entry.Message,
 			"Context":  string(data_out)})
-		err := hook.producerInstance.SendLog(PROJECT, LOGSTORE, typ, hostname, log)
+		err := hook.producerInstance.SendLog(PROJECT, hook.logstore, typ, hostname, log)
 		if err != nil {
 			// TODO
 		}
