@@ -30,10 +30,11 @@ const (
 )
 
 const (
-	defMaxRolls    = 3
+	defMaxRolls    = 1
 	envLogToFile   = "LOG_TO_FILE"          // write log to file
 	envLogServer   = "LOG_SERVER"           // log server
 	envLogEndpoint = "LOG_ENDPOINT"         // Aliyun SLS endpoint
+	envLogStore = "LOG_STORE"         // Aliyun SLS logstore
 	envLogKey      = "ALIYUN_ACCESS_KEY"    // Aliyun access key
 	envLogSecret   = "ALIYUN_ACCESS_SECRET" // Aliyun access secret
 	envJobID       = "JOB_ID"               // job id
