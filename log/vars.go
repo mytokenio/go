@@ -25,7 +25,7 @@ const (
 
 const (
 	typeField  = "log_type"
-	defLogPath = "/data/logs/"
+	defLogPath = "/tmp/logs/"
 	defLogFile = "default.log"
 )
 
