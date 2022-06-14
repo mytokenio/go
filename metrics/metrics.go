@@ -16,7 +16,7 @@ type Metrics interface {
 	//backend name
 	String() string
 	Counter(id string) Counter
-	Gauge(id string) Gauge
+	//Gauge(id string) Gauge
 	Close() error
 }
 
@@ -27,16 +27,23 @@ type Counter interface {
 	With(pair ...string) Counter
 }
 
-type Gauge interface {
-	Set(value int64)
-	Value() int64
-	With(pair ...string) Gauge
-}
+//type Gauge interface {
+//	Set(value int64)
+//	Value() int64
+//	With(pair ...string) Gauge
+//}
 
 // 兼容性处理
-func Count(param ... struct{}) {
+func Count(param ... interface{}) {
 	return
 }
-func Alarm(param ... struct{}) {
+func Alarm(param ... interface{}) {
 	return
 }
+func Close() {
+	return
+}
+func Gauge(param ... interface{}) {
+	return
+}
+
