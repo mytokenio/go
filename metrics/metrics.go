@@ -1,6 +1,8 @@
 package metrics
 
-import "time"
+import (
+	"time"
+)
 
 // reference to https://github.com/rcrowley/go-metrics
 // internal/kv reference to gokit
@@ -29,4 +31,12 @@ type Gauge interface {
 	Set(value int64)
 	Value() int64
 	With(pair ...string) Gauge
+}
+
+// 兼容性处理
+func Count(param ... struct{}) {
+	return
+}
+func Alarm(param ... struct{}) {
+	return
 }
